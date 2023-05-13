@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class HelloApiTest {
     @Test
     void helloApi(){
@@ -19,11 +21,11 @@ public class HelloApiTest {
                 rest.getForEntity("http://localhost:8080/hello?name={name}", String.class, "Spring");
 
         // status 200
-        Assertions.assertThat(res.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(res.getStatusCode()).isEqualTo(HttpStatus.OK);
         // header(content-type) text/plain
 //        Assertions.assertThat(res.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).isEqualTo(MediaType.TEXT_PLAIN_VALUE); // 전체를 비교
-        Assertions.assertThat(res.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).startsWith(MediaType.TEXT_PLAIN_VALUE); // text/plain으로 시작하는지 확인
+        assertThat(res.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).startsWith(MediaType.TEXT_PLAIN_VALUE); // text/plain으로 시작하는지 확인
         // body Hello Spring
-        Assertions.assertThat(res.getBody()).isEqualTo("Hello Spring");
+        assertThat(res.getBody()).isEqualTo("Hello Spring");
     }
 }
