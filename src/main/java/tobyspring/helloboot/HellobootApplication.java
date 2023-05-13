@@ -1,5 +1,6 @@
 package tobyspring.helloboot;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
 
@@ -21,10 +22,10 @@ public class HellobootApplication {
 	}
 
 	@Bean
-	public DispatcherServlet dispatcherServlet(){
+	public DispatcherServlet dispatcherServlet() {
 		return new DispatcherServlet();
 	}
 	public static void main(String[] args){
-		MySpringApplication.run(HellobootApplication.class, args);
+		SpringApplication.run(HellobootApplication.class, args);
 	}
 }
